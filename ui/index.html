@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>动效工作台</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="top"><span class="brand"><b>◈</b> 动效工作台</span><span class="project">无题 · 动效试片</span><button id="save">下载项目 JSON</button></header>
+<main>
+  <section class="workspace">
+    <aside class="library">
+      <div class="panel-title">素材库 <button id="import">＋ 导入图片</button></div>
+      <input type="file" id="file" accept="image/*" hidden>
+      <div id="assets"></div>
+    </aside>
+    <section class="viewer">
+      <div class="panel-title">预览 <small>16:9 · 30 fps</small></div>
+      <div class="stage"><canvas id="preview" width="960" height="540" aria-label="动效预览"></canvas></div>
+      <div class="transport"><button id="restart" title="回到起点" aria-label="回到起点">|◀</button><button id="play" aria-label="播放">▶</button><output id="time">00:00:00</output></div>
+    </section>
+    <aside class="inspector">
+      <div class="panel-title">片段属性</div>
+      <form id="properties">
+        <h2 id="clipName"></h2>
+        <label>时间线起点 <span>秒</span><input name="start" type="number" min="0" step=".0333333333333333"></label>
+        <label>源入点 <span>秒</span><input name="in" type="number" min="0" step=".0333333333333333"></label>
+        <label>源出点 <span>秒</span><input name="out" type="number" min="0" step=".0333333333333333"></label>
+        <button type="submit">应用</button>
+      </form>
+      <p id="empty" hidden>选择时间线中的片段。</p>
+      <p id="status" role="status"></p>
+    </aside>
+  </section>
+  <section class="timeline">
+    <div class="panel-title">时间线 <div class="tools"><button id="undo" title="Ctrl+Z">撤销</button><button id="redo" title="Ctrl+Shift+Z">重做</button><label>缩放 <input id="zoom" type="range" min="60" max="150" value="78"></label></div></div>
+    <div class="timeline-scroll">
+      <div id="trackLabels"></div>
+      <div id="sequence"><div id="ruler" tabindex="0" aria-label="播放位置，方向键逐帧移动"></div><div id="lanes"></div><div id="needle"></div></div>
+    </div>
+    <footer>拖动片段移动 · 拖动两端裁切 · 空格播放或暂停</footer>
+  </section>
+</main>
+</body>
+</html>

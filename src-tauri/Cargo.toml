@@ -1,0 +1,13 @@
+[package]
+name = "motion-workbench"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = "2"
+
+[dependencies]
+tauri = "2"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
